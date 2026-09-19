@@ -62,7 +62,7 @@ class AlarmProvider(context: Context, workerHandler: Handler) :
         client.addListener(listener)
         workerHandler.post {
             try {
-                val initial = client.getState(AxPlatformClient.KEY_ALARM)
+                val initial = client.getStateBundle(AxPlatformClient.KEY_ALARM)
                 val triggerTime = initial.getLong("triggerTime", 0L)
                 if (triggerTime > 0) updateAlarm(triggerTime)
             } catch (e: Exception) {

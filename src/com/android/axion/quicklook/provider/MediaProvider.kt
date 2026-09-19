@@ -62,7 +62,7 @@ class MediaProvider(context: Context, workerHandler: Handler) :
         client.addListener(listener)
         workerHandler.post {
             try {
-                val initial = client.getState(AxPlatformClient.KEY_MEDIA)
+                val initial = client.getStateBundle(AxPlatformClient.KEY_MEDIA)
                 if (!initial.isEmpty) updateFromBundle(initial)
             } catch (e: Exception) {
                 Log.w(TAG, "Failed to read initial media state", e)
